@@ -1,0 +1,46 @@
+
+<html>
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2 style="margin-left:520px;margin-top:50px;">DASHBORD FOR CANDIDATES RESULT</h2>
+        <table style="width: 500px;margin-left:550px;margin-top:30px">
+            <tr>
+                <th>Candidate_id</th>
+                <th>Interview_Id</th>
+                <th>HR Rating </th>
+                <th>SELECTED: True / REJECTED: false</th>
+            </tr>
+            <tr *ngFor="let i of m">
+                <td>{{i.Candidate_id}}</td>
+                <td>{{i.Interview_Id}}</td>
+                <td>{{i.HRrating}}</td>
+                <th>{{i.FinalStatus}}</th>
+            </tr>
+
+        </table>
+    </div>
+</body>
+
+</html>

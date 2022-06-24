@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="interviewtrackingModelStoreContainer" CdmEntityContainer="interviewtrackingEntities6">
+    <EntitySetMapping Name="c_add_admin">
+      <EntityTypeMapping TypeName="interviewtrackingModel.c_add_admin">
+        <MappingFragment StoreEntitySet="c_add_admin">
+          <ScalarProperty Name="Candidate_id" ColumnName="Candidate_id" />
+          <ScalarProperty Name="candidateName" ColumnName="candidateName" />
+          <ScalarProperty Name="pSkills" ColumnName="pSkills" />
+          <ScalarProperty Name="sSkills" ColumnName="sSkills" />
+          <ScalarProperty Name="experience" ColumnName="experience" />
+          <ScalarProperty Name="qualification" ColumnName="qualification" />
+          <ScalarProperty Name="designation" ColumnName="designation" />
+          <ScalarProperty Name="noticeperiod" ColumnName="noticeperiod" />
+          <ScalarProperty Name="clocation" ColumnName="clocation" />
+          <ScalarProperty Name="passwordC" ColumnName="passwordC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="schedule1">
+      <EntityTypeMapping TypeName="interviewtrackingModel.schedule1">
+        <MappingFragment StoreEntitySet="schedule1">
+          <ScalarProperty Name="Schedule_id" ColumnName="Schedule_id" />
+          <ScalarProperty Name="Candidate_id" ColumnName="Candidate_id" />
+          <ScalarProperty Name="Interview_Id" ColumnName="Interview_Id" />
+          <ScalarProperty Name="HRrating" ColumnName="HRrating" />
+          <ScalarProperty Name="hrIS" ColumnName="hrIS" />
+          <ScalarProperty Name="FinalStatus" ColumnName="FinalStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="techpannels">
+      <EntityTypeMapping TypeName="interviewtrackingModel.techpannel">
+        <MappingFragment StoreEntitySet="techpannel">
+          <ScalarProperty Name="Interview_Id" ColumnName="Interview_Id" />
+          <ScalarProperty Name="Candidate_id" ColumnName="Candidate_id" />
+          <ScalarProperty Name="Techrating" ColumnName="Techrating" />
+          <ScalarProperty Name="techIS" ColumnName="techIS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

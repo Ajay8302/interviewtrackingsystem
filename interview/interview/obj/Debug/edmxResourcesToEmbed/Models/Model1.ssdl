@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="interviewtrackingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="c_add_admin">
+    <Key>
+      <PropertyRef Name="Candidate_id" />
+    </Key>
+    <Property Name="Candidate_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="candidateName" Type="varchar" MaxLength="30" />
+    <Property Name="pSkills" Type="varchar" MaxLength="20" />
+    <Property Name="sSkills" Type="varchar" MaxLength="20" />
+    <Property Name="experience" Type="tinyint" />
+    <Property Name="qualification" Type="varchar" MaxLength="20" />
+    <Property Name="designation" Type="varchar" MaxLength="30" />
+    <Property Name="noticeperiod" Type="varchar" MaxLength="20" />
+    <Property Name="clocation" Type="varchar" MaxLength="30" />
+    <Property Name="passwordC" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="schedule1">
+    <Key>
+      <PropertyRef Name="Schedule_id" />
+    </Key>
+    <Property Name="Schedule_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Candidate_id" Type="int" />
+    <Property Name="Interview_Id" Type="int" />
+    <Property Name="HRrating" Type="int" />
+    <Property Name="hrIS" Type="datetime" />
+    <Property Name="FinalStatus" Type="bit" />
+  </EntityType>
+  <EntityType Name="techpannel">
+    <Key>
+      <PropertyRef Name="Interview_Id" />
+    </Key>
+    <Property Name="Interview_Id" Type="int" Nullable="false" />
+    <Property Name="Candidate_id" Type="int" />
+    <Property Name="Techrating" Type="int" />
+    <Property Name="techIS" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__schedule1__Candi__1AD3FDA4">
+    <End Role="c_add_admin" Type="Self.c_add_admin" Multiplicity="0..1" />
+    <End Role="schedule1" Type="Self.schedule1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="c_add_admin">
+        <PropertyRef Name="Candidate_id" />
+      </Principal>
+      <Dependent Role="schedule1">
+        <PropertyRef Name="Candidate_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__schedule1__Inter__1BC821DD">
+    <End Role="techpannel" Type="Self.techpannel" Multiplicity="0..1" />
+    <End Role="schedule1" Type="Self.schedule1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="techpannel">
+        <PropertyRef Name="Interview_Id" />
+      </Principal>
+      <Dependent Role="schedule1">
+        <PropertyRef Name="Interview_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__techpanne__Candi__17F790F9">
+    <End Role="c_add_admin" Type="Self.c_add_admin" Multiplicity="0..1" />
+    <End Role="techpannel" Type="Self.techpannel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="c_add_admin">
+        <PropertyRef Name="Candidate_id" />
+      </Principal>
+      <Dependent Role="techpannel">
+        <PropertyRef Name="Candidate_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="interviewtrackingModelStoreContainer">
+    <EntitySet Name="c_add_admin" EntityType="Self.c_add_admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="schedule1" EntityType="Self.schedule1" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="techpannel" EntityType="Self.techpannel" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__schedule1__Candi__1AD3FDA4" Association="Self.FK__schedule1__Candi__1AD3FDA4">
+      <End Role="c_add_admin" EntitySet="c_add_admin" />
+      <End Role="schedule1" EntitySet="schedule1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__schedule1__Inter__1BC821DD" Association="Self.FK__schedule1__Inter__1BC821DD">
+      <End Role="techpannel" EntitySet="techpannel" />
+      <End Role="schedule1" EntitySet="schedule1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__techpanne__Candi__17F790F9" Association="Self.FK__techpanne__Candi__17F790F9">
+      <End Role="c_add_admin" EntitySet="c_add_admin" />
+      <End Role="techpannel" EntitySet="techpannel" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin-left: 230px;">
+        <h2 style="margin-left:390px;margin-top:50px">Accepted Candidates</h2>
+        <table style="width: 500px;margin-left:300px;margin-top:30px">
+            <tr>
+                <th>Candidate_id</th>
+                <th>Interview_Id</th>
+                <th>Techrating</th>
+            </tr>
+            <tr>
+                <td>{{Candidate_id}}</td>
+                <td>{{Interview_Id}}</td>
+                <td>{{techIS }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <style>
+        .c1 {
+            border: 3px solid red
+        }
+
+        .c2 {
+            border: 3px solid green
+        }
+    </style>
+    <form #frm="ngForm" style="width: 600px;margin-left: 500px;margin-top: 100px;">
+        <div class="container">
+            <label for="HRrating"><b>HRrating</b></label><br>
+            <input type="text" id="HRrating" ngModel class="form-control" required pattern="[0-9]{2}" #m="ngModel"
+                [class.c2]="m.valid && m.touched" [class.c1]="m.invalid && m.touched" placeholder="Enter Rating   /10"
+                style="width:300px" name="HRrating"><br><br>
+            <div style="background-color: yellow;color:red;">
+                <div *ngIf="m.errors?.['required'] && m.touched">Enter Rating</div>
+                <div *ngIf="m.errors?.['required'] && m.touched">Enter number Only</div>
+            </div>
+            <div class="form-group">
+                <div class="input-group">
+                    <label for="exampleInputEmail1" style="padding-right: 2px;"><strong>Set Interview Schedule
+                            Date</strong></label>
+                    <input type="date" id="hrIS" name="hrIS" #n="ngModel" required class="form-control" ngModel>
+                    <div style="background-color:gainsboro;color:red;">
+                        <div *ngIf="n.errors?.['required'] && n.touched">Set Date first</div>
+                    </div>
+                </div>
+                <div><br>
+                    <label for="FinalStatus"><b>FinalStatus</b></label><br>
+                    <input type="radio" name="FinalStatus" id="FinalStatus" ngModel #p="ngModel" required
+                        value="True">Rejected &nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="FinalStatus" id="FinalStatus" ngModel #p="ngModel" value="False"> selected
+                    <br>
+                    <button type="submit" [disabled]="frm.form.invalid" class="btn btn-primary btn-block"
+                        (click)="hrdata()">Submit</button>
+                </div>
+
+                <div class="alert alert-danger" style="margin-left: 95px;width: 500px; margin-top: 1px;">
+                    <strong>{{res}}</strong>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div *ngIf="res!=null">
+        {{res.hrIS}}
+
+        {{res.HRrating}}
+
+        {{res.FinalStatus}}
+    </div>

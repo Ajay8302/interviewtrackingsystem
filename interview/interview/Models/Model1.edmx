@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="interviewtrackingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="c_add_admin">
+          <Key>
+            <PropertyRef Name="Candidate_id" />
+          </Key>
+          <Property Name="Candidate_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="candidateName" Type="varchar" MaxLength="30" />
+          <Property Name="pSkills" Type="varchar" MaxLength="20" />
+          <Property Name="sSkills" Type="varchar" MaxLength="20" />
+          <Property Name="experience" Type="tinyint" />
+          <Property Name="qualification" Type="varchar" MaxLength="20" />
+          <Property Name="designation" Type="varchar" MaxLength="30" />
+          <Property Name="noticeperiod" Type="varchar" MaxLength="20" />
+          <Property Name="clocation" Type="varchar" MaxLength="30" />
+          <Property Name="passwordC" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="schedule1">
+          <Key>
+            <PropertyRef Name="Schedule_id" />
+          </Key>
+          <Property Name="Schedule_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Candidate_id" Type="int" />
+          <Property Name="Interview_Id" Type="int" />
+          <Property Name="HRrating" Type="int" />
+          <Property Name="hrIS" Type="datetime" />
+          <Property Name="FinalStatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="techpannel">
+          <Key>
+            <PropertyRef Name="Interview_Id" />
+          </Key>
+          <Property Name="Interview_Id" Type="int" Nullable="false" />
+          <Property Name="Candidate_id" Type="int" />
+          <Property Name="Techrating" Type="int" />
+          <Property Name="techIS" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__schedule1__Candi__1AD3FDA4">
+          <End Role="c_add_admin" Type="Self.c_add_admin" Multiplicity="0..1" />
+          <End Role="schedule1" Type="Self.schedule1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="c_add_admin">
+              <PropertyRef Name="Candidate_id" />
+            </Principal>
+            <Dependent Role="schedule1">
+              <PropertyRef Name="Candidate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__schedule1__Inter__1BC821DD">
+          <End Role="techpannel" Type="Self.techpannel" Multiplicity="0..1" />
+          <End Role="schedule1" Type="Self.schedule1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="techpannel">
+              <PropertyRef Name="Interview_Id" />
+            </Principal>
+            <Dependent Role="schedule1">
+              <PropertyRef Name="Interview_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__techpanne__Candi__17F790F9">
+          <End Role="c_add_admin" Type="Self.c_add_admin" Multiplicity="0..1" />
+          <End Role="techpannel" Type="Self.techpannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="c_add_admin">
+              <PropertyRef Name="Candidate_id" />
+            </Principal>
+            <Dependent Role="techpannel">
+              <PropertyRef Name="Candidate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="interviewtrackingModelStoreContainer">
+          <EntitySet Name="c_add_admin" EntityType="Self.c_add_admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="schedule1" EntityType="Self.schedule1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="techpannel" EntityType="Self.techpannel" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__schedule1__Candi__1AD3FDA4" Association="Self.FK__schedule1__Candi__1AD3FDA4">
+            <End Role="c_add_admin" EntitySet="c_add_admin" />
+            <End Role="schedule1" EntitySet="schedule1" />
+          </AssociationSet>
+          <AssociationSet Name="FK__schedule1__Inter__1BC821DD" Association="Self.FK__schedule1__Inter__1BC821DD">
+            <End Role="techpannel" EntitySet="techpannel" />
+            <End Role="schedule1" EntitySet="schedule1" />
+          </AssociationSet>
+          <AssociationSet Name="FK__techpanne__Candi__17F790F9" Association="Self.FK__techpanne__Candi__17F790F9">
+            <End Role="c_add_admin" EntitySet="c_add_admin" />
+            <End Role="techpannel" EntitySet="techpannel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="interviewtrackingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="c_add_admin">
+          <Key>
+            <PropertyRef Name="Candidate_id" />
+          </Key>
+          <Property Name="Candidate_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="candidateName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="pSkills" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="sSkills" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="experience" Type="Byte" />
+          <Property Name="qualification" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="designation" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="noticeperiod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="clocation" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="passwordC" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="schedule1" Relationship="Self.FK__schedule1__Candi__1AD3FDA4" FromRole="c_add_admin" ToRole="schedule1" />
+          <NavigationProperty Name="techpannels" Relationship="Self.FK__techpanne__Candi__17F790F9" FromRole="c_add_admin" ToRole="techpannel" />
+        </EntityType>
+        <EntityType Name="schedule1">
+          <Key>
+            <PropertyRef Name="Schedule_id" />
+          </Key>
+          <Property Name="Schedule_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Candidate_id" Type="Int32" />
+          <Property Name="Interview_Id" Type="Int32" />
+          <Property Name="HRrating" Type="Int32" />
+          <Property Name="hrIS" Type="DateTime" Precision="3" />
+          <Property Name="FinalStatus" Type="Boolean" />
+          <NavigationProperty Name="c_add_admin" Relationship="Self.FK__schedule1__Candi__1AD3FDA4" FromRole="schedule1" ToRole="c_add_admin" />
+          <NavigationProperty Name="techpannel" Relationship="Self.FK__schedule1__Inter__1BC821DD" FromRole="schedule1" ToRole="techpannel" />
+        </EntityType>
+        <EntityType Name="techpannel">
+          <Key>
+            <PropertyRef Name="Interview_Id" />
+          </Key>
+          <Property Name="Interview_Id" Type="Int32" Nullable="false" />
+          <Property Name="Candidate_id" Type="Int32" />
+          <Property Name="Techrating" Type="Int32" />
+          <Property Name="techIS" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="c_add_admin" Relationship="Self.FK__techpanne__Candi__17F790F9" FromRole="techpannel" ToRole="c_add_admin" />
+          <NavigationProperty Name="schedule1" Relationship="Self.FK__schedule1__Inter__1BC821DD" FromRole="techpannel" ToRole="schedule1" />
+        </EntityType>
+        <Association Name="FK__schedule1__Candi__1AD3FDA4">
+          <End Role="c_add_admin" Type="Self.c_add_admin" Multiplicity="0..1" />
+          <End Role="schedule1" Type="Self.schedule1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="c_add_admin">
+              <PropertyRef Name="Candidate_id" />
+            </Principal>
+            <Dependent Role="schedule1">
+              <PropertyRef Name="Candidate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__techpanne__Candi__17F790F9">
+          <End Role="c_add_admin" Type="Self.c_add_admin" Multiplicity="0..1" />
+          <End Role="techpannel" Type="Self.techpannel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="c_add_admin">
+              <PropertyRef Name="Candidate_id" />
+            </Principal>
+            <Dependent Role="techpannel">
+              <PropertyRef Name="Candidate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__schedule1__Inter__1BC821DD">
+          <End Role="techpannel" Type="Self.techpannel" Multiplicity="0..1" />
+          <End Role="schedule1" Type="Self.schedule1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="techpannel">
+              <PropertyRef Name="Interview_Id" />
+            </Principal>
+            <Dependent Role="schedule1">
+              <PropertyRef Name="Interview_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="interviewtrackingEntities6" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="c_add_admin" EntityType="Self.c_add_admin" />
+          <EntitySet Name="schedule1" EntityType="Self.schedule1" />
+          <EntitySet Name="techpannels" EntityType="Self.techpannel" />
+          <AssociationSet Name="FK__schedule1__Candi__1AD3FDA4" Association="Self.FK__schedule1__Candi__1AD3FDA4">
+            <End Role="c_add_admin" EntitySet="c_add_admin" />
+            <End Role="schedule1" EntitySet="schedule1" />
+          </AssociationSet>
+          <AssociationSet Name="FK__techpanne__Candi__17F790F9" Association="Self.FK__techpanne__Candi__17F790F9">
+            <End Role="c_add_admin" EntitySet="c_add_admin" />
+            <End Role="techpannel" EntitySet="techpannels" />
+          </AssociationSet>
+          <AssociationSet Name="FK__schedule1__Inter__1BC821DD" Association="Self.FK__schedule1__Inter__1BC821DD">
+            <End Role="techpannel" EntitySet="techpannels" />
+            <End Role="schedule1" EntitySet="schedule1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="interviewtrackingModelStoreContainer" CdmEntityContainer="interviewtrackingEntities6">
+          <EntitySetMapping Name="c_add_admin">
+            <EntityTypeMapping TypeName="interviewtrackingModel.c_add_admin">
+              <MappingFragment StoreEntitySet="c_add_admin">
+                <ScalarProperty Name="Candidate_id" ColumnName="Candidate_id" />
+                <ScalarProperty Name="candidateName" ColumnName="candidateName" />
+                <ScalarProperty Name="pSkills" ColumnName="pSkills" />
+                <ScalarProperty Name="sSkills" ColumnName="sSkills" />
+                <ScalarProperty Name="experience" ColumnName="experience" />
+                <ScalarProperty Name="qualification" ColumnName="qualification" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+                <ScalarProperty Name="noticeperiod" ColumnName="noticeperiod" />
+                <ScalarProperty Name="clocation" ColumnName="clocation" />
+                <ScalarProperty Name="passwordC" ColumnName="passwordC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="schedule1">
+            <EntityTypeMapping TypeName="interviewtrackingModel.schedule1">
+              <MappingFragment StoreEntitySet="schedule1">
+                <ScalarProperty Name="Schedule_id" ColumnName="Schedule_id" />
+                <ScalarProperty Name="Candidate_id" ColumnName="Candidate_id" />
+                <ScalarProperty Name="Interview_Id" ColumnName="Interview_Id" />
+                <ScalarProperty Name="HRrating" ColumnName="HRrating" />
+                <ScalarProperty Name="hrIS" ColumnName="hrIS" />
+                <ScalarProperty Name="FinalStatus" ColumnName="FinalStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="techpannels">
+            <EntityTypeMapping TypeName="interviewtrackingModel.techpannel">
+              <MappingFragment StoreEntitySet="techpannel">
+                <ScalarProperty Name="Interview_Id" ColumnName="Interview_Id" />
+                <ScalarProperty Name="Candidate_id" ColumnName="Candidate_id" />
+                <ScalarProperty Name="Techrating" ColumnName="Techrating" />
+                <ScalarProperty Name="techIS" ColumnName="techIS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

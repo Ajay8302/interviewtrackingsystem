@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="53ef56701e9549bf80ae522a3a82242a" Name="Diagram1">
+        <EntityTypeShape EntityType="interviewtrackingModel.c_add_admin" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="interviewtrackingModel.schedule1" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="interviewtrackingModel.techpannel" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="interviewtrackingModel.FK__schedule1__Candi__1AD3FDA4" ManuallyRouted="false" />
+        <AssociationConnector Association="interviewtrackingModel.FK__techpanne__Candi__17F790F9" ManuallyRouted="false" />
+        <AssociationConnector Association="interviewtrackingModel.FK__schedule1__Inter__1BC821DD" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

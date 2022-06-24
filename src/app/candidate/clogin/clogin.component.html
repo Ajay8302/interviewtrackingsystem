@@ -1,0 +1,49 @@
+<style>
+    .c1 {
+        border: 3px solid red
+    }
+
+    .c2 {
+        border: 3px solid green
+    }
+</style>
+<div class="im">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mt-3 shadow-lg p-3 text-center">
+                    <h3>Candiadte/User Login</h3>
+                    <hr>
+                    <form #myfrm="ngForm" (ngSubmit)="Clogin(myfrm.value)" style="margin-left: 50px;">
+                        <div style="width:500px;">
+                            <label>Enter Candidate Name</label>
+                            <input type="text" name="candidateName" id="candidateName" #m="ngModel" required
+                                pattern="[a-z]+" ngModel class="form-control" [class.c2]="m.valid && m.touched"
+                                [class.c1]="m.invalid && m.touched">
+                            <div style="background-color: yellow;color:red;">
+                                <div *ngIf="m.errors?.['required'] && m.touched">Enter Username</div>
+                                <div *ngIf="m.errors?.['required'] && m.touched">field not be blank enter name</div>
+                                <div *ngIf="m.errors?.['pattern'] && m.touched">pls enter only alphebets</div>
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <label>Enter Password</label>
+                                <input type="password" name="passwordC" id="passwordC" #n="ngModel" required
+                                    pattern="[a-z]+" ngModel class="form-control" [class.c2]="n.valid && n.touched"
+                                    [class.c2]="m.valid && m.touched" [class.c1]="n.invalid && n.touched">
+                                <div style="background-color: yellow;color:red;">
+                                    <div *ngIf="n.errors?.['required'] && n.touched">Enter password</div>
+                                    <div *ngIf="n.errors?.['pattern'] && n.touched">pls use special character</div>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <button class="btn btn-success btn-black mt-3" type="submit" value="Login"> Login</button>
+                            <button class="btn btn-success" type="submit" style="margin-left:10px;margin-top:15px"  routerLink="/cregister">Register</button>&nbsp;
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

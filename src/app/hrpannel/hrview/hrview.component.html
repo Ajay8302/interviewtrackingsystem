@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="margin-left: 220px;">
+        <h2 style="margin-left:315px;margin-top:50px">Tech Pannel Shared: Candidates</h2>
+        <table style="width: 500px;margin-left:300px;margin-top:30px">
+            <tr>
+                <th>Candidate_id</th>
+                <th>Interview_Id</th>
+                <th>Techrating</th>
+                <th>Share </th>
+            </tr>
+            <tr *ngFor="let i of m">
+                <td>{{i.Candidate_id}}</td>
+                <td>{{i.Interview_Id}}</td>
+                <td>{{i.Techrating}}</td>
+                <td><button type="button" routerLink="/hraccess" class="btn btn-info"
+                        [queryParams]={a:i.Candidate_id,b:i.Interview_Id,c:i.Techrating,d:i.techIS}>Accept</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+</body>
+
+</html>

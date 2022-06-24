@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 style="margin-left:650px;margin-top:50px">Admin Shared Candidates</h2>
+    <table style="width: 500px;margin-left:300px;margin-top:30px">
+        <tr>
+            <th>Candidate_id</th>
+            <th>candidateName</th>
+            <th>pSkills</th>
+            <th>sSkills</th>
+            <th>experience</th>
+            <th>qualification</th>
+            <th>designation</th>
+            <th>noticeperiod</th>
+            <th>clocation</th>
+            <th>Share </th>
+        </tr>
+        <tr *ngFor="let i of m">
+            <td>{{i.Candidate_id}}</td>
+            <td>{{i.candidateName}}</td>
+            <td>{{i.pSkills}}</td>
+            <td>{{i.sSkills}}</td>
+            <td>{{i.experience}}</td>
+            <td>{{i.qualification}}</td>
+            <td>{{i.designation}}</td>
+            <td>{{i.noticeperiod}}</td>
+            <td>{{i.clocation}}</td>
+            <td><button type="button" routerLink="/tech-paccess" class="btn btn-info"
+                [queryParams]={a:i.Candidate_id,b:i.candidateName,c:i.pSkills,d:i.sSkills,e:i.experience,f:i.qualification,g:i.designation,h:i.noticeperiod,i:i.clocation}>Accept</button>
+            </td>
+            <td><button type="button" class="btn btn-sm btn-danger" (click)="Deletetech(i.Candidate_id)"><i class="fa fa-remove"></i>Delete</button>
+            </td>
+        </tr>
+    </table>
+    <div class="alert alert-danger" style="margin-left: 300px;">
+        <strong>{{res1}}</strong>
+    </div>
+</body>
+
+</html>

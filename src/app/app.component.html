@@ -1,0 +1,20 @@
+<html>
+
+<body class="bg-img">
+        <div class="navbar" style="margin-left: x;">
+            <a routerLink="/home">Home</a>
+            <button  *ngIf="c" style="margin-left: 706px;" routerLink="/adminlogin" class="btn btn-primary">Admin</button>
+            <button  *ngIf="!c"  style="margin-left: 706px;" routerLink="/admlogout" class="btn btn-danger">Admin Logout</button>
+            <button  *ngIf="d" routerLink="/techlogin" class="btn btn-primary">Tech Pannel</button>
+            <button  *ngIf="!d" routerLink="/techlogout" class="btn btn-danger">Tech Logout</button>
+            <button  *ngIf="e" style="margin-right: 30px;" routerLink="/hrlogin" class="btn btn-primary">Human Resourse</button>
+            <button  *ngIf="!e" routerLink="/hrlogout" class="btn btn-danger">HR Logout</button>
+            <button  *ngIf="b" style="margin-right: 30px;" routerLink="/clogin" class="btn btn-primary">Candidate</button>
+            <button  *ngIf="!b" routerLink="/clogout" class="btn btn-danger">Candidate Logout</button>
+        </div>
+    <article>
+        <router-outlet></router-outlet>
+    </article>
+</body>
+
+</html>

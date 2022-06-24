@@ -1,0 +1,4 @@
+this is web-api folder containing all Logical code files using Entity Framework 4.8
+
+
+"interview" is the name of solution for web-api

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 style="margin-left:580px;margin-top:50px">Final Status: Candidates</h2>
+    <table style="width: 500px;margin-left:500px;margin-top:30px">
+        <tr>
+            <th>Candidate_id</th>
+            <th>Interview_Id</th>
+            <th>HRrating</th>
+            <th>Hr Schedule Date </th>
+            <th>FinalStatus </th>
+            <!-- <th>Share </th> -->
+        </tr>
+        <tr *ngFor = "let i of p">
+            <td>{{i.Candidate_id}}</td>
+            <td>{{i.Interview_Id}}</td>
+            <td>{{i.HRrating}}</td>
+            <td>{{i.hrIS}}</td>
+            <td>{{i.FinalStatus}}</td>
+        </tr> 
+    </table>
+</body>
+
+</html>
